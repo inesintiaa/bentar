@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TodoCategory;
 use App\Models\Todo;
+use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
@@ -12,7 +14,13 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::get();
+        // $todos = DB::table('todos')
+        //             ->join('todo_categories', 'todos.todo_category_id', '=', 'todo_categories.id')
+        //             ->join('users', 'todos.user_id', '=', 'users.id')
+        //             ->get();
+        $todos = Todo::join('todo_categories', 'todo_categories.id', '=', 'todos.todo_category_id')
+            ->join('users', 'users.id', '=', 'todos.user_id')
+            ->get();
         // dd($todos);
         return view('todo.todo', compact('todos'));
     }
@@ -22,7 +30,9 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todo.create');
+        $todocategories = TodoCategory::where('user_id', 1)->get();
+        // dd($todocategories); //var_dump(); die;
+        return view('todo.create', compact('todocategories'));
     }
 
     /**
@@ -33,6 +43,8 @@ class TodoController extends Controller
         // dd($request->all());
 
         $value = [
+            'todo_category_id' => $request->todo_category_id,
+            'user_id' => 1,
             'title' => $request->title,
             'description' => $request->description,
         ];
@@ -67,6 +79,8 @@ class TodoController extends Controller
         // dd($request->all());
 
         $value = [
+            'todo_category_id' => $request->todo_category_id,
+            'user_id' => 1,
             'title' => $request->title,
             'description' => $request->description,
         ];

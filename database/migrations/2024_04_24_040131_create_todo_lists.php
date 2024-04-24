@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('todo_lists', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('todo_category_id')->unsigned();
+            $table->bigInteger('todo_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('title');
-            $table->string('description');
+            $table->enum('day', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
+            $table->integer('status');
+            $table->date('todo_date');
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -24,9 +25,9 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('todo_category_id')
+            $table->foreign('todo_id')
                 ->references('id')
-                ->on('todo_categories')
+                ->on('todos')
                 ->onDelete('cascade');
         });
     }
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists('todo_lists');
     }
 };
