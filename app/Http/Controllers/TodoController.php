@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\TodoCategory;
 use App\Models\Todo;
 use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -44,7 +50,7 @@ class TodoController extends Controller
 
         $value = [
             'todo_category_id' => $request->todo_category_id,
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'title' => $request->title,
             'description' => $request->description,
         ];
@@ -80,7 +86,7 @@ class TodoController extends Controller
 
         $value = [
             'todo_category_id' => $request->todo_category_id,
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'title' => $request->title,
             'description' => $request->description,
         ];
