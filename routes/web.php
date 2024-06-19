@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TodoListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,11 @@ Route::prefix('todo')->group(function () {
     Route::get('/delete/{id}', [TodoController::class, 'destroy']);
     Route::post('/store', [TodoController::class, 'store']);
     Route::post('/update/{id}', [TodoController::class, 'update']);
+});
+
+Route::prefix('todolist')->group(function () {
+    Route::get('/', [TodoListController::class, 'index']);
+    Route::get('/delete/{id}', [TodoListController::class, 'destroy']);
+    Route::post('/store', [TodoListController::class, 'store']);
+    Route::post('/update/{id}', [TodoListController::class, 'update']);
 });

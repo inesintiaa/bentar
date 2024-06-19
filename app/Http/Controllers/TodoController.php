@@ -26,6 +26,15 @@ class TodoController extends Controller
         //             ->get();
         $todos = Todo::join('todo_categories', 'todo_categories.id', '=', 'todos.todo_category_id')
             ->join('users', 'users.id', '=', 'todos.user_id')
+            ->select(
+                'users.*',
+                'todo_categories.*',
+                'todos.id as todo_id',
+                'todos.todo_category_id',
+                'todos.user_id',
+                'todos.title',
+                'todos.description',
+                )
             ->get();
         // dd($todos);
         return view('todo.todo', compact('todos'));
@@ -73,7 +82,7 @@ class TodoController extends Controller
     public function edit(string $id)
     {
         $todo = Todo::find($id);
-        // dd($todo);
+        // dd($id, $todo);
         return view('todo.edit', compact('todo'));
     }
 

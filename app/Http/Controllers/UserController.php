@@ -30,7 +30,7 @@ class UserController extends Controller
             return redirect('dashboard');
         }
 
-        return redirect('dashboard');
+        return redirect('/user/login')->with('error', 'Login gagal. Silakan coba lagi.');
     }
 
     public function register(){
