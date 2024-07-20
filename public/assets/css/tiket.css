@@ -1,0 +1,77 @@
+.ticket {
+    border: 2px solid grey;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    background-color: #f8f9fa;
+}
+
+.ticket.gold {
+    background-color: #ffd700;
+}
+
+.ticket.silver {
+    background-color: #c0c0c0;
+}
+
+.ticket.bronze {
+    background-color: #cd7f32;
+}
+
+.ticket-date.gold {
+    background-color: #ffd700;
+}
+
+.ticket-date.silver {
+    background-color: #c0c0c0;
+}
+
+.ticket-date.bronze {
+    background-color: #cd7f32;
+}
+
+.ticket-date {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+    flex: 0 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-date h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.ticket-date span {
+    font-size: 14px;
+}
+
+.ticket-info {
+    padding: 20px;
+    flex: 1;
+    border-left: 2px dashed grey;
+    border-radius: 0 10px 10px 0;
+}
+
+.ticket-info h5 {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.ticket-info p {
+    margin: 5px 0;
+}
+
+.ticket-info .btn {
+    margin-top: 10px;
+    background-color: #e0e0e0;
+    border: none;
+    color: #6c757d;
+}

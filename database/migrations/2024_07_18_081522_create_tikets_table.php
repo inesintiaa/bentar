@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todo_categories', function (Blueprint $table) {
+        Schema::create('tikets', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('category');
+            // $table->foreignId('konser_id')->constrained('konser')->onDelete('cascade');
+            $table->enum('category', ['Gold', 'Silver', 'Bronze']);
+            $table->decimal('price', 10, 2);
+            $table->integer('quantity');
             $table->timestamps();
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todo_categories');
+        Schema::dropIfExists('tikets');
     }
 };

@@ -16,3 +16,21 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# ine, peserta konser tiket
+/app/Http/Controllers/RiwayatController.php
+/app/Http/Controllers/TransaksiController.php
+
+/app/Models/Riwayat.php
+/app/Models/Transaksi.php
+
+/app/Observers/TransaksiObserver.php
+
+/database/migrations/2024_07_18_081546_create_transaksis_table.php
+/database/migrations/2024_07_19_012622_create_riwayats_table.php
+
+/database/factories/TransaksiFactory.php
+/database/factories/RiwayatFactory.php
+
+/resources/views/riwayat
+/resources/views/transaksi
